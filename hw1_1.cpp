@@ -7,18 +7,35 @@ int main()
 {
     ifstream myFile;
     string fileName;
-    string line;
-   cout << "Enter input file name: " << endl;
+    
+    int *dynamArray;
+    int count;
+    int num;
+   cout << "Enter input file name: ";
    cin >> fileName;
    myFile.open(fileName.c_str());
-   cout << endl;
-   cout<< fileName + " is opened" << endl;
-   while(getline(myFile,line).good()) // To get you all the lines.
+
+   while(myFile >> num ) // To get you all the lines.
         {
-	        getline(myFile,line); // Saves the line in STRING.
-	        cout<<line; // Prints our STRING.
+            cout << "Reading data from file. \n";
+	        count++;
+	        
         }
+    dynamArray = new int[count];
+    myFile.close();
+    myFile.open(fileName.c_str());
+    count = 0;
+    while(myFile >> num ) // To get you all the lines.
+        {
+            cout << "Reading data from file. \n";
+	        dynamArray[count] = num;
+	        cout<< num << endl; // Prints our STRING.
+	        count++;
+        }
+    
 	myFile.close();
+	
+	delete[] dynamArray;
 	cout << "\n is closed";
    
     return 0;
