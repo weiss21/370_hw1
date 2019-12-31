@@ -24,7 +24,7 @@ int main()
     dynamArray = new int[count];
     myFile.close();
     myFile.open(fileName.c_str());
-    count = 0;
+    count = 0; //reset array
     while(myFile >> num ) // To get you all the lines.
         {
             cout << "Reading data from file. \n";
@@ -35,8 +35,30 @@ int main()
     
 	myFile.close();
 	
-	delete[] dynamArray;
-	cout << "\n is closed";
+	//check array for min distance
+	//cout << count;
+	int min = 30; //random high number
+	int x, y, temp;
+	for (int i = 0; i < count; i++){
+	    for(int j = i + 1; j < count; j++){
+	        temp = dynamArray[i] - dynamArray[j];
+            
+            if(temp < 0){
+                temp *= -1;
+            }
+	        if (temp < min){
+	            min = temp;
+	            x = dynamArray[i];
+	            y = dynamArray[j];
+	        }
+	    }
+	}
+	
+	delete[] dynamArray; //delete array
+	
+	cout << "\nMin distance:" << min << endl;
+	cout << "Two numbers for min distance: " << x << " and " << y;
+	cout << "\n is closed\n";
    
     return 0;
 }
