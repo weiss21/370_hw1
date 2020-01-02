@@ -1,11 +1,3 @@
-/*
- * Title: hw1_1.cpp
- * Abstract: This program reads a text file and shows the min distance between two numbers.
- * Author: Wais Robleh
- * ID: 003381338
- * Date: 01/04/2020
- */
- 
 #include <iostream>
 #include <fstream>
 #include <string>
@@ -19,7 +11,6 @@ int main()
     int *dynamArray;
     int count;
     int num;
-
    cout << "Enter input file name: ";
    cin >> fileName;
    myFile.open(fileName.c_str());
@@ -48,7 +39,6 @@ int main()
 	//cout << count;
 	int min = 30; //random high number
 	int x, y, temp;
-	int q, r = 0;
 	for (int i = 0; i < count; i++){
 	    for(int j = i + 1; j < count; j++){
 	        temp = dynamArray[i] - dynamArray[j];
@@ -56,14 +46,10 @@ int main()
             if(temp < 0){
                 temp *= -1;
             }
-	        if (temp < min && temp > 0){
+	        if (temp < min){
 	            min = temp;
 	            x = dynamArray[i];
 	            y = dynamArray[j];
-	        }
-	        if(temp == min && x != dynamArray[i] && x != dynamArray[j] && y != dynamArray[i] && y != dynamArray[j]){
-	            q = dynamArray[i];
-	            r = dynamArray[j];
 	        }
 	    }
 	}
@@ -71,12 +57,8 @@ int main()
 	delete[] dynamArray; //delete array
 	
 	cout << "\nMin distance:" << min << endl;
-	cout << "Two numbers for min distance: " << x << " and " << y << endl;
-	
-	if(q != 0){
-	    cout << "Two numbers for min distance: " << q << " and " << r << endl;
-	}
-
-
+	cout << "Two numbers for min distance: " << x << " and " << y;
+	cout << "\n is closed\n";
+   
     return 0;
 }
