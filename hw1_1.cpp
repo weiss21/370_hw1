@@ -9,6 +9,7 @@
 #include <iostream>
 #include <fstream>
 #include <string>
+#include <cmath>
 using namespace std;
 
 int main() 
@@ -50,9 +51,7 @@ int main()
 	    for(int j = i + 1; j < count; j++){
 	        temp = dynamArray[i] - dynamArray[j];
             
-            if(temp < 0){
-                temp *= -1;
-            }
+            temp = abs(temp);
 	        if (temp < min && temp > 0){
 	            min = temp;
 	            x = dynamArray[i];
