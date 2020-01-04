@@ -2,7 +2,7 @@
  * Title: hw1_1.cpp
  * Abstract: This program reads a text file and shows the min distance between two numbers.
  * Author: Wais Robleh
- * ID: 003381338
+ * ID: 1624
  * Date: 01/04/2020
  */
  
