@@ -24,16 +24,13 @@ int main()
    cin >> fileName;
    myFile.open(fileName.c_str());
 
-   while(myFile >> num ) // To get you all the lines.
-        {
-            cout << "Reading data from file. \n";
-	        count++;
-	        
-        }
+    if (myFile >> num)
+    {
+      count = num;
+    }
     dynamArray = new int[count];
-    myFile.close();
-    myFile.open(fileName.c_str());
     count = 0; //reset array
+    
     while(myFile >> num ) // To get you all the lines.
         {
             cout << "Reading data from file. \n";
@@ -49,7 +46,7 @@ int main()
 	int min = 30; //random high number
 	int x, y, temp;
 	int q, r = 0;
-	for (int i = 0; i < count; i++){
+	for (int i = 0; i < count - 1; i++){
 	    for(int j = i + 1; j < count; j++){
 	        temp = dynamArray[i] - dynamArray[j];
             
