@@ -66,26 +66,39 @@ int main()
 	
 	
 	//finds a pair that corresponds to min.
+
     for (int i = 0; i < count; i++)
     {
     	for (int j = i + 1; j < count; j++)
     	{
-    		if (abs (dynamArray[i]-dynamArray[j]) == min)
+    		temp = abs(dynamArray[i] - dynamArray[j]);
+    		if (temp == min)
     		{
-    			//push values into vectors.
+    			//push values into vectors arrays.
     			x.push_back(dynamArray[i]);
     			y.push_back(dynamArray[j]);
+
     		}
     	}
     }
     
 	delete[] dynamArray; //delete array
 	
+	
+	
 	cout << "\nMin distance:" << min << endl;
 	//displays number pairs with minimum distance
     for (unsigned int i = 0; i < x.size(); i++)
     {
-       	cout << "Two numbers with minimum distance: " << x[i] << " and " << y[i] << endl;
+		if(i > 0 && x[i] == x[i - 1] ) //i greater than zero and x value equals than x value to left of vector
+		{
+			continue;
+		} 
+		else
+       	{
+       		cout << "Two numbers for minimum distance: " << x[i] << " and " << y[i] << endl;
+       		
+       	}
     }
 	
 
