@@ -10,6 +10,7 @@
 #include <fstream>
 #include <string>
 #include <cmath>
+#include <vector>
 using namespace std;
 
 int main() 
@@ -20,6 +21,12 @@ int main()
     int *dynamArray;
     int count;
     int num;
+    
+    int min = 30; //random high number
+	int temp;
+    
+    vector<int> x;  
+    vector<int> y;  
 
    cout << "Enter input file name: ";
    cin >> fileName;
@@ -34,9 +41,9 @@ int main()
     
     while(myFile >> num ) // To get you all the lines.
         {
-            cout << "Reading data from file. \n";
+            //cout << "Reading data from file. \n";
 	        dynamArray[count] = num;
-	        cout<< num << endl; // Prints our STRING.
+	        //cout<< num << endl; // Prints our STRING.
 	        count++;
         }
     
@@ -44,34 +51,44 @@ int main()
 	
 	//check array for min distance
 	//cout << count;
-	int min = 30; //random high number
-	int x, y, temp;
-	int q, r = 0;
+	
+
 	for (int i = 0; i < count - 1; i++){
 	    for(int j = i + 1; j < count; j++){
-	        temp = dynamArray[i] - dynamArray[j];
+	        temp = abs(dynamArray[i] - dynamArray[j]);
             
-            temp = abs(temp);
-	        if (temp < min && temp > 0){
+	        if (temp < min){
 	            min = temp;
-	            x = dynamArray[i];
-	            y = dynamArray[j];
 	        }
-	        if(temp == min && x != dynamArray[i] && x != dynamArray[j] && y != dynamArray[i] && y != dynamArray[j]){
-	            q = dynamArray[i];
-	            r = dynamArray[j];
-	        }
+
 	    }
 	}
 	
+	
+	//finds a pair that corresponds to min.
+    for (int i = 0; i < count; i++)
+    {
+    	for (int j = i + 1; j < count; j++)
+    	{
+    		if (abs (dynamArray[i]-dynamArray[j]) == min)
+    		{
+    			//push values into vectors.
+    			x.push_back(dynamArray[i]);
+    			y.push_back(dynamArray[j]);
+    		}
+    	}
+    }
+    
 	delete[] dynamArray; //delete array
 	
 	cout << "\nMin distance:" << min << endl;
-	cout << "Two numbers for min distance: " << x << " and " << y << endl;
+	//displays number pairs with minimum distance
+    for (unsigned int i = 0; i < x.size(); i++)
+    {
+       	cout << "Two numbers with minimum distance: " << x[i] << " and " << y[i] << endl;
+    }
 	
-	if(q != 0){
-	    cout << "Two numbers for min distance: " << q << " and " << r << endl;
-	}
+
 
 
     return 0;
